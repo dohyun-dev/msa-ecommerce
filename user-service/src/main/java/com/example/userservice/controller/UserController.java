@@ -14,10 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user-service")
 public class UserController {
 
     @Autowired
@@ -43,5 +46,18 @@ public class UserController {
         userService.createUser(userDto);
         UserResponse response = mapper.map(userDto, UserResponse.class);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserResponse>> getUsers() {
+        List<UserResponse> result = userService.getUserByAll().stream().map(u -> new ModelMapper().map(u, UserResponse.class)).collect(Collectors.toList());
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserResponse> getUsers(@PathVariable("userId") String userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+        UserResponse userResponse = new ModelMapper().map(userDto, UserResponse.class);
+        return ResponseEntity.ok(userResponse);
     }
 }
