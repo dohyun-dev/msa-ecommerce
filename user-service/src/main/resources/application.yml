@@ -14,7 +14,7 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
   config:
-    import: "optional:configserver:"
+    import: "optional:config-server:"
 
 eureka:
   instance:
