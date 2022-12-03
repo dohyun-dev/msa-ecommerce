@@ -8,4 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/kwon/Desktop/study/msa-ecommerce
+#          uri: file:///Users/kwon/Desktop/study/msa-ecommerce
+          uri: https://github.com/dohyun-dev/msa-ecommerce.git
+#          username: ""
+#          password: ""
