@@ -14,7 +14,7 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
   config:
-    import: "optional:config-server:"
+    import: "optional:configserver:"
 
 eureka:
   instance:
@@ -35,3 +35,9 @@ logging:
 token:
   expiration_time: 86400000
   secret: user_token
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
