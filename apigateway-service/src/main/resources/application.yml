@@ -10,6 +10,11 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: quest
+    passord: quest
   cloud:
     gateway:
       routes:
@@ -73,4 +78,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refesh, health, beans, httptrace
+        include: refesh, health, beans, httptrace, busrefresh

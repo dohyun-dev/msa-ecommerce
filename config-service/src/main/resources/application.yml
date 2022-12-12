@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: quest
+    passord: quest
   cloud:
     config:
       server:
@@ -12,3 +17,8 @@ spring:
           uri: https://github.com/dohyun-dev/msa-ecommerce.git
 #          username: ""
 #          password: ""
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
